@@ -1,13 +1,13 @@
-'use client';
-import { Open_Sans } from 'next/font/google';
-import { forwardRef, useEffect, useRef } from 'react';
+'use client'
+import { Open_Sans } from 'next/font/google'
+import { forwardRef, useEffect, useRef } from 'react'
 
-export const openSans = Open_Sans({ subsets: ['latin'] });
+export const openSans = Open_Sans({ subsets: ['latin'] })
 
 export interface OpenSansTextProps {
-  text: string;
-  tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
-  style?: 'w400' | 'w500' | 'w600' | 'w700';
+  text: string
+  tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p'
+  style?: 'w200' | 'w400' | 'w500' | 'w600' | 'w700'
   fontSize?:
     | '12px'
     | '14px'
@@ -16,8 +16,8 @@ export interface OpenSansTextProps {
     | '24px'
     | '30px'
     | '35px'
-    | '64px';
-  className?: string;
+    | '64px'
+  className?: string
 }
 
 export const OpenSansText = forwardRef<
@@ -34,50 +34,52 @@ export const OpenSansText = forwardRef<
     },
     ref,
   ) => {
-    const textContent = useRef<HTMLParagraphElement>(null);
+    const textContent = useRef<HTMLParagraphElement>(null)
     useEffect(() => {
       if (textContent.current) {
-        textContent.current.innerHTML = text;
+        textContent.current.innerHTML = text
       }
-    }, [text]);
+    }, [text])
 
     function getSize() {
       switch (fontSize) {
         case '12px':
-          return 'text-xs';
+          return 'text-xs'
         case '14px':
-          return 'text-sm';
+          return 'text-sm'
         case '16px':
-          return 'text-sm sm:text-base';
+          return 'text-sm sm:text-base'
         case '18px':
-          return 'text-base sm:text-lg';
+          return 'text-base sm:text-lg'
         case '24px':
-          return 'text-xl sm:text-[24px]';
+          return 'text-xl sm:text-[24px]'
         case '30px':
-          return 'text-[30px]';
+          return 'text-[30px]'
         case '35px':
-          return 'text-[35px]';
+          return 'text-[35px]'
         case '64px':
-          return 'text-[64px]';
+          return 'text-[64px]'
       }
     }
 
     function getStyle() {
       switch (style) {
+        case 'w200':
+          return 'font-light'
         case 'w400':
-          return 'font-normal';
+          return 'font-normal'
         case 'w500':
-          return 'font-medium';
+          return 'font-medium'
         case 'w600':
-          return 'font-semibold';
+          return 'font-semibold'
         case 'w700':
-          return 'font-bold';
+          return 'font-bold'
       }
     }
 
     let globalStyle = `${
       openSans.className
-    } ${getSize()} leading-normal ${getStyle()} antialiased`;
+    } ${getSize()} leading-normal ${getStyle()} antialiased`
 
     function getTag() {
       switch (tag) {
@@ -86,48 +88,48 @@ export const OpenSansText = forwardRef<
             <h1 ref={textContent} className={`${globalStyle} ${className}`}>
               {text}
             </h1>
-          );
+          )
         case 'h2':
           return (
             <h2 ref={textContent} className={`${globalStyle} ${className}`}>
               {text}
             </h2>
-          );
+          )
         case 'h3':
           return (
             <h3 ref={textContent} className={`${globalStyle} ${className}`}>
               {text}
             </h3>
-          );
+          )
         case 'h4':
           return (
             <h4 ref={textContent} className={`${globalStyle} ${className}`}>
               {text}
             </h4>
-          );
+          )
         case 'h5':
           return (
             <h5 ref={textContent} className={`${globalStyle} ${className}`}>
               {text}
             </h5>
-          );
+          )
         case 'h6':
           return (
             <h6 ref={textContent} className={`${globalStyle} ${className}`}>
               {text}
             </h6>
-          );
+          )
         case 'p':
           return (
             <p ref={textContent} className={`${globalStyle} ${className}`}>
               {text}
             </p>
-          );
+          )
       }
     }
 
-    return <>{getTag()}</>;
+    return <>{getTag()}</>
   },
-);
+)
 
-OpenSansText.displayName = 'OpenSansText';
+OpenSansText.displayName = 'OpenSansText'

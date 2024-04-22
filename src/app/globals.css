@@ -17,17 +17,62 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  -ms-overflow-style: none;
+}
+html {
+  scrollbar-width: smooth;
+  background-color: #0e3358;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  scrollbar-width: none;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+section::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+/* Custom transition on hover */
+.onHover {
+  transition: all 0.3s ease-in-out;
+}
+
+.image-swiper-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.swiper-pagination-bullet-active {
+  background: black !important;
+}
+
+.swiper-pagination-bullet {
+  background: #e0e0e0;
+  border: #000;
+}
+
+/* Infinite Bounce animation  */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(32px);
+  }
+  30% {
+    transform: translateY(0px);
+  }
+}
+
+.bounce {
+  animation: bounce 2s infinite;
 }
